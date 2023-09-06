@@ -2,41 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>Contact us | Chaahat Homes infratech</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/x-icon">
-	<meta property="og:title" content="Contact us | Chaahat Homes infratech"/>
-<meta name="twitter:title" content="Contact us | Chaahat Homes infratech" />
-<meta name="description" content="Contact Us to Buy Residential & Commercial Properties in Gurgaon India – Chaahat Homes." />
-<meta property="og:description" content="Contact Us to Buy Residential & Commercial Properties in Gurgaon India – Chaahat Homes."/>
-<meta name="twitter:description" content="Contact Us to Buy Residential & Commercial Properties in Gurgaon India – Chaahat Homes." />
-
-<meta name="keywords" content="Chahaat Homes, Real Estate Consultant,Property Advisor Gurgaon" />
-<meta name="ROBOTS" content="index, follow"/>
-<meta name="ROBOTS" content="ALL"/>
-<meta name="Slurp" content="index,follow,archive" />
-<meta name="robots" content="NOODP" />
-<meta name="geo.region" content="IN" />
-<meta name="allow-search" content="yes" />
-<meta name="revisit-after" content="daily" />
-<meta name="distribution" content="global" />
-<meta name="expires" content="never" />
-<meta name="author" content="Chahaat Homes">
-<meta property="og:site_name" content="Chaahat Homes">
-<meta property="og:url" content="https://chaahathomesinfratech.com/">
-
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://chaahathomesinfratech.com/<?= BASE_URL ?>assets/images/logo.png">
-<meta name="twitter:card" content="summary_large_image" />
-
-
-<meta name="twitter:site" content="@HomesChaahat" />
-<meta name="twitter:image" content="https://chaahathomesinfratech.com/<?= BASE_URL ?>assets/images/logo.png" />
-<meta name="twitter:creator" content="@HomesChaahat" />
-<?php  include 'include/css-url.php' ?>
-</head>
+<?php include 'include/css-url.php'; ?>
 
 <body id="homepage">
 
@@ -100,25 +66,25 @@
                                 </h2>
                             </div>
                             <div class="contact-form-sec">
-                                <form>
+                                <form metho="POST" id="ContactQuery" name="ContactQuery">
                                     <div class="form-group">
                                         <label for="name">Your Name *</label>
-                                        <input type="text" class="form-control" placeholder="Name" id="qSenderName">
+                                        <input type="text" class="form-control" placeholder="Name" id="query_name" name="query_name">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email address *</label>
-                                        <input type="text" class="form-control" placeholder="E-Mail ID" id="qEmailID">
+                                        <input type="text" class="form-control" placeholder="E-Mail ID" id="query_email" name="query_email">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Phone Number *</label>
-                                        <input type="text" class="form-control" placeholder="Phone Number" id="qMobileNo">
+                                        <input type="text" class="form-control" placeholder="Phone Number" id="query_phone" name="query_phone">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Message *</label>
-                                        <textarea class="form-control" rows="6" placeholder="Comment" id="qMessage"></textarea>
+                                        <textarea class="form-control" rows="6" placeholder="Comment" id="query_msg" name="query_msg"></textarea>
                                     </div>
 
-                                    <input type="submit" class="btn btn-warning" value="SUBMIT" id="SubmitQuery">
+                                    <input type="submit" class="btn btn-warning" value="SUBMIT" id="ContactQuery">
                                 </form>
 
                             </div>
@@ -146,9 +112,46 @@
     <?php  include 'include/footer.php' ?>
     <?php  include 'include/modal.php' ?>
     <?php  include 'include/js-url.php' ?>
-
-
 </body>
-
-
 </html>
+<script>
+    $(document).on('submit',"#ContactQuery", function(e){
+    
+        e.preventDefault(0);
+        // debugger;
+        var formData = new FormData(this);
+        $.ajax({
+            url : BASE_URL+'ajax/contact/ajax-contact-insert.php',
+            type: "POST",
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData: false,
+            success : function(resp){
+                var data=JSON.parse(JSON.stringify(resp));
+                if(data.status==3){
+                    $('.errors').remove();
+                    var keys = Object.keys(data.errors);
+                    for (let index = 0; index < keys.length; index++) {
+                        var keynam=keys[index];
+                        $('#'+keynam).after('<p class="errors text-danger">'+data.errors[keynam]+'<p>');
+                            if(index==0){
+                                $('#'+keynam).focus();
+                            }
+                    }
+                    alert(data.message);
+
+                }else if(data.status==1){
+                    window.location.reload();
+                    alert(data.message);
+
+                }else{
+                        window.location.reload();
+                        alert(data.message);
+                }
+            }
+        })
+    });
+
+</script>

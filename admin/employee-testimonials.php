@@ -2,67 +2,55 @@
 	include_once 'config/conn.php';
 	include_once 'layout/header/header.php';
 	include_once 'layout/side-nav/left-side-nav.php';
+  include_once 'include/function.php';
 ?>
 
 <section class="microsite-area">
 <div class="inner-micro-structure">
     <div class="left-area">
 
+      <form name="testimonials_query" id="testimonials_query" method="POST">
+        <div class="microbox">
+          <div class="head-box">
+            <h6><i class="fa fa-building" aria-hidden="true"></i> Add Employee Testimonials</h6>
+          </div>
 
-      <div class="microbox">
-        <div class="head-box">
-          <h6><i class="fa fa-building" aria-hidden="true"></i> Add Employee Testimonials</h6>
-        </div>
+            <div class="box-two">
+              <div class="admin-text">
+                <span>Employee name</span>
+              </div>
+              <div class="input-sec-multi">
+              <input type="text" class="form-control" placeholder="" id="name" name="name">
+              <div id="name_err" class="text-danger"></div>
+              </div>
+          </div><!-------------box-2-------->
 
           <div class="box-two">
-            <div class="admin-text">
-              <span>Employee name</span>
-            </div>
-            <div class="input-sec-multi">
-            <input type="text" class="form-control" placeholder="" id="name">
-            <div id="name_err" class="text-danger"></div>
-            </div>
-        </div><!-------------box-2-------->
-
-        <div class="box-two">
-            <div class="admin-text">
-              <span>Image</span>
-              <small>Image Size 800*500 Only</small>
-            </div>
-            <div class="input-sec-multi">
-            <input type="file" class="form-control-file form-control" id="image">
-            <div id="image_err" class="text-danger"></div>
-            <div class="inner-box">
-              <div class="img-box">
-                 </div>
-            </div>
-            </div>
-        </div><!-------------box-2-------->
-        <div class="box-two">
-            <div class="admin-text">
-              <span>Designation</span>
-            </div>
-            <div class="input-sec-multi">
-            <input type="text" class="form-control" placeholder="" id="designation">
-            <div id="designation_err" class="text-danger"></div>
-            </div>
-        </div><!-------------box-2-------->
-        <div class="box-two">
-            <div class="admin-text">
-              <span>Paragraph</span>
-            </div>
-            <div class="input-sec-multi">
-            <input type="text" class="form-control" placeholder="" id="description">
-            <div id="description_err" class="text-danger"></div>
-            </div>
-        </div><!-------------box-2-------->
-      </div>
-      <div class="btn-save">
-        <input type="hidden" id="hiddenId">
-        <input type="hidden" id="oldImage">
-      <button class="save-btn" id="update">Update</button>
-      <button class="save-btn" id="submit">Save</button>
-    </div>
+              <div class="admin-text">
+                <span>Designation</span>
+              </div>
+              <div class="input-sec-multi">
+              <input type="text" class="form-control" placeholder="" id="designation" name="designation">
+              <div id="designation_err" class="text-danger"></div>
+              </div>
+          </div><!-------------box-2-------->
+          <div class="box-two">
+              <div class="admin-text">
+                <span>Paragraph</span>
+              </div>
+              <div class="input-sec-multi">
+              <input type="text" class="form-control" placeholder="" id="description" name="description">
+              <div id="description_err" class="text-danger"></div>
+              </div>
+          </div><!-------------box-2-------->
+        </div>
+        <div class="btn-save">
+          <input type="hidden" id="hiddenId">
+          <input type="hidden" id="oldImage">
+          <button class="save-btn d-none">Update</button>
+          <button class="save-btn" type="submit" name="submit" id="submit">Save</button>
+        </div>
+      </form>
     <br><br>
     </div>
     <div class="right-area">
@@ -93,7 +81,7 @@
                   $name = $row['name'];
                   echo "<tr>";
                   echo "<td><h6>".$name."</h6></td>";
-                  echo "<td><a href='javascript:void(0)' onclick=editTestimonial($id)><i class='fa fa-pencil' aria-hidden='true'></i></a></td>";
+                  echo "<td><a href='javascript:void(0)' class='editTestimoindals' dataid='".encryptor('encrypt', $id)."' ><i class='fa fa-pencil'  aria-hidden='true'></i></a></td>";
                   echo "<td><a href='javascript:void(0)' onclick=deleteTestimonial($id)><i class='fa fa-times' aria-hidden='true'></i></a></td>";
                   echo "</tr>";
                 }
@@ -107,19 +95,36 @@
     </div>
        <hr>
   </div>
-
-<!-----------------------------------------------edit-------------------------------------------->
-<!-- <div class="edit-section-heading">
-  <h2>Edit/Delete Project Details : :</h2>
-</div>
-<div class="edit-inner-micro-structure">
-<div class="left-area">
-  <div class="edit-microbox"></div>
-</div>
-<div class="right-area">
-  <div class="edit-microbox"></div>
-</div>
-</div> -->
+  <div class="modal fade zoomIn" id="updaemicrobanners" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0">
+          <div class="modal-header p-3 bg-soft-success">
+              <h5 class="modal-title" id="modal-heading-append">Testimonials Update</h5>
+              <button type="button" class="fa fa-times" data-dismiss="modal" id="addProjectBtn-close" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="updateothermicrodata">
+                <div class="form-group">
+                  <input type="hidden" id="testimonials_update_id"/>
+                  <div class="mb-2">
+                    <label for="">Employee Name</label>
+                    <input type="text" name="testimonials_update_name" id="testimonials_update_name" class="form-control">
+                  </div>
+                  <div class="mb-2">
+                    <label for="">Designation</label>
+                    <input type="text" name="testimonials_update_designation" id="testimonials_update_designation" class="form-control">
+                  </div>
+                  <div class="mb-2">
+                    <label for="">Paragraph</label>
+                    <input type="text" name="testimonials_update_paragraph" id="testimonials_update_paragraph" class="form-control">
+                  </div>
+                </div>
+              <button class="btn btn-sm btn-info">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
 </section>
 
 
@@ -130,140 +135,138 @@
 
 <script>
 
-function validation(){
-  var flag = true
-  var name = $('#name').val()
-  if(name == ''){
-    $('#name_err').html('Name is Required')
-    flag = false
-  }else{
-    $('#name_err').html('')
-  }
+  $(document).on('submit', "#testimonials_query", function(e){
+    e.preventDefault(0);
+      debugger;
+      var formData = new FormData(this);
+      $.ajax({
+          url : 'ajax/testimonials/ajax-testimonials-insert.php',
+          type: "POST",
+          data: formData,
+          dataType: 'json',
+          contentType: false,
+          cache: false,
+          processData: false,
+          success : function(resp){
+              var data=JSON.parse(JSON.stringify(resp));
+              if(data.status==3){
+                  $('.errors').remove();
+                  var keys = Object.keys(data.errors);
+                  for (let index = 0; index < keys.length; index++) {
+                      var keynam=keys[index];
+                      $('#'+keynam).after('<p class="errors text-danger">'+data.errors[keynam]+'<p>');
+                        if(index==0){
+                            $('#'+keynam).focus();
+                        }
+                  }
+                  alert(data.message);
+              }else if(data.status==1){
+                  window.location.reload();
+                  alert(data.message);
 
-  var image = $('#image')[0].files;
+              }else{
+                      window.location.reload();
+                      alert(data.message);
+              }
+          }
+      })
+  });
 
-  if(image.length == 0){
-    $('#image_err').html('Image is required')
-    flag = false
-  }
-  else if(image.length != 0){
-    var validExt = ['jpg','png', 'JPEG', 'jpeg']
-    var extension = $('#image')[0].files[0].type.split('/')[1]
-    if(validExt.indexOf(extension) == -1){
-      $('#image_err').html('Upload jpg, png only')
-      flag = false
-    }else{
-      $('#image_err').html('')
+$(document).on('click','.editTestimoindals',function(){
+debugger;
+
+  var dataid=$(this).attr('dataid'); 
+  
+  $.ajax({
+    url:'ajax/testimonials/ajax-testimonials-edit.php',
+    type:'post',
+    data: {'id':dataid},
+    success:function(res){
+      var jsonData = JSON.parse(res);
+      if(jsonData.status==1){
+        row=jsonData['data'];
+
+    
+      $('#testimonials_update_name').val(row['name']);
+      $('#testimonials_update_designation').val(row['designation']);
+      $('#testimonials_update_paragraph').val(row['description']);
+    }else{ 
+      alert(data.message);
     }
-  }
-  else{
-    $('#image_err').html('')
-  }
-
-  var designation = $('#designation').val()
-  if(designation == ''){
-    $('#designation_err').html('Designation is Required')
-    flag = false
-  }
-  else{
-    $('#designation_err').html('')
-  }
-
-  var description = $('#description').val()
-  if(description == ''){
-    $('#description_err').html('Paragraph is Required')
-    flag = false
-  }
-  else{
-    $('#description_err').html('')
-  }
-
-
-//on keyup // 
-$('#name').on('change',function(){
-  var name = $('#name').val()
-  if(name == ''){
-    $('#name_err').html('Name is Required')
-    flag = false
-  }else{
-    $('#name_err').html('')
-  }
-})
-
-$('#image').on('change',function(){
-  var image = $('#image')[0].files;
-
-  if(image.length == 0){
-    $('#image_err').html('Image is required')
-    flag = false
-  }
-  else if(image.length != 0){
-    var validExt = ['jpg','png', 'JPEG', 'jpeg']
-    var extension = $('#image')[0].files[0].type.split('/')[1]
-    if(validExt.indexOf(extension) == -1){
-      $('#image_err').html('Upload jpg, png only')
-      flag = false
-    }else{
-      $('#image_err').html('')
     }
-  }
-  else{
-    $('#image_err').html('')
-  }
-})
-
-$('#designation').on('keyup',function(){
-  var designation = $('#designation').val()
-  if(designation == ''){
-    $('#designation_err').html('Designation is Required')
-    flag = false
-  }
-  else{
-    $('#designation_err').html('')
-  }
-})
-
-$('#description').on('keyup',function(){
-  var description = $('#description').val()
-  if(description == ''){
-    $('#description_err').html('Paragraph is Required')
-    flag = false
-  }
-  else{
-    $('#description_err').html('')
-  }
-
-})
-
-if(flag){
-  return true
-}else{
-  return false
-}
-
-}
+  });
 
 
-$('#update').hide()
+  $(document).on('submit','#updateothermicrodata',function(){
+
+
+    e.preventDefault(0);
+    var formData = new FormData(this);
+    formData.append('eid',dataid);
+    // debugger;
+    $.ajax({
+		url : 'ajax/microsite/ajax-microsite-project-update.php',
+        type: "POST",
+        data: formData,
+        dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData: false,
+        enctype: 'multipart/form-data',
+        success : function(resp){
+            var data=JSON.parse(JSON.stringify(resp));
+        if(data.status==3){
+            $('.errors').remove();
+            var keys = Object.keys(data.errors);
+            for (let index = 0; index < keys.length; index++) {
+               var keynam=keys[index];
+                $('#'+keynam).after('<p class="errors">'+data.errors[keynam]+'<p>');
+                    if(index==0){
+                        $('#'+keynam).focus();
+                    }
+            }
+            alert(data.message);
+
+        }else if(data.status==1){
+            window.location.href="Project-list.php";
+            alert(data.message);
+
+
+        }else{
+                window.location.reload();
+                alert(data.message);
+        }
+       
+        }
+    })
+
+  });
+  $("#updaemicrobanners").modal('show');
+
+
+
+
+
+
+
+
+
+});
+</script>
+
+<script>
 
 function editTestimonial(id){
-  $('#update').show()
-  $('#submit').hide()
-  $('#hiddenId').val(id);
-  $(".loader-icon-head").css('display', 'flex');
+  $('#testimonials_update_id').val(id);
   $.ajax({
     url:'ajax/testimonials/ajax-testimonials-edit.php',
     type:'post',
     data: {'id':id},
     success:function(data){
       var jsonData = JSON.parse(data)
-      $('#name').val(jsonData.name)
-      $('.img-box').html('<img src="uploads/testimonials/'+jsonData.image+'">')
-      // $('#image').val(jsonData.image)
-      $('#designation').val(jsonData.designation)
-      $('#description').val(jsonData.description)
-      $('#oldImage').val(jsonData.image);
-      $(".loader-icon-head").css('display', 'none');
+      $('#testimonials_update_name').val(jsonData.name)
+      $('#testimonials_update_designation').val(jsonData.designation)
+      $('#testimonials_update_paragraph').val(jsonData.description)
     }
   })
 }
@@ -281,81 +284,43 @@ function deleteTestimonial(id){
   })
 }
 
-//INSERT testimonials //
-
-$('#submit').on('click',function(){
-
-  if(!validation()){
-  return false;
-}
-
-var name = $('#name').val()
-var image = $('#image')[0].files[0]
-var designation = $('#designation').val()
-var description = $('#description').val()
-
-var fd = new FormData()
-fd.append('name', name)
-fd.append('image', image)
-fd.append('designation',designation)
-fd.append('description', description)
-$(".loader-icon-head").css('display', 'flex');
-$.ajax({
-  url:'ajax/testimonials/ajax-testimonials-insert.php',
-  type:'post',
-  data: fd,
-  contentType:false,
-  processData:false,
-  success:function(data){
-  // $('#name').val('')
-  // $('#image').val('')
-  // $('#designation').val('')
-  // $('#description').val('')
-  // window.location.reload()
-  $(".loader-icon-head").css('display', 'none');
-  window.location.reload()
-  }
-
-})
-})
-
 //Update testimonials //
 $('#update').on('click',function(){
 
-var id = $('#hiddenId').val()
-var oldImage = $('#oldImage').val()
-var name = $('#name').val()
-var image = $('#image')[0].files[0]
-var designation = $('#designation').val()
-var description = $('#description').val()
+  var id = $('#hiddenId').val()
+  var oldImage = $('#oldImage').val()
+  var name = $('#name').val()
+  var image = $('#image')[0].files[0]
+  var designation = $('#designation').val()
+  var description = $('#description').val()
 
-var fd = new FormData()
-fd.append('id', id)
-fd.append('name', name)
-fd.append('image', image)
-fd.append('oldImage', oldImage)
-fd.append('designation', designation)
-fd.append('description', description)
-$(".loader-icon-head").css('display', 'flex');
-$.ajax({
-  url:'ajax/testimonials/ajax-testimonials-update.php',
-  type:'post',
-  data: fd,
-  contentType:false,
-  processData:false,
-  success:function(data){
-  // $('#name').val('')
-  // $('#image').val('')
-  // $('#oldImage').val('')
-  // $('#designation').val('')
-  // $('#description').val('')
-  // $('#update').hide()
-  // $('#submit').show()
-  $(".loader-icon-head").css('display', 'none');
-  window.location.reload()
-  // console.log(data)
-  }
-})
+  var fd = new FormData()
+  fd.append('id', id)
+  fd.append('name', name)
+  fd.append('image', image)
+  fd.append('oldImage', oldImage)
+  fd.append('designation', designation)
+  fd.append('description', description)
+  $(".loader-icon-head").css('display', 'flex');
+  $.ajax({
+    url:'ajax/testimonials/ajax-testimonials-update.php',
+    type:'post',
+    data: fd,
+    contentType:false,
+    processData:false,
+    success:function(data){
+    // $('#name').val('')
+    // $('#image').val('')
+    // $('#oldImage').val('')
+    // $('#designation').val('')
+    // $('#description').val('')
+    // $('#update').hide()
+    // $('#submit').show()
+    $(".loader-icon-head").css('display', 'none');
+    window.location.reload()
+    // console.log(data)
+    }
+  })
 })
 
 

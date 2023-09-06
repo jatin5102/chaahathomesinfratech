@@ -1,6 +1,8 @@
 
 
-
+<script>
+  var BASE_URL="<?php echo BASE_URL ?>";
+</script>
   <!-- Javascript Files
     ================================================== -->
   <script src="<?= BASE_URL ?>assets/js/jquery.min.js"></script>

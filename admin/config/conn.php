@@ -1,3 +1,6 @@
+
+
+
 <?php
 define('BASE_URL','http://localhost/chaahathomesinfratech/');
 define('ADMIN_ASSETS','http://localhost/chaahathomesinfratech/admin/uploads/');
@@ -12,6 +15,7 @@ define('ADMIN_ASSETS','http://localhost/chaahathomesinfratech/admin/uploads/');
 // if (!$conn) {
 //   die("Connection failed: " . mysqli_connect_error());
 // }
+
 
 
 $servername = "localhost";
