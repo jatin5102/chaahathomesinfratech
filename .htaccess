@@ -1,0 +1,24 @@
+RewriteEngine On
+#RewriteCond %{HTTP_HOST} ^perfecttutor.in
+#RewriteRule (.*) https://www.perfecttutor.in/$1 [R=301,L]
+#RewriteRule ^www.perfecttutor.in/ https://perfecttutor.in/ [NC,L]
+#RewriteRule ^www.perfecttutor.in/ https://www.perfecttutor.in/ [NC,L]
+#ErrorDocument 404 https://www.perfecttutor.in/error-404
+#RewriteRule ^error-404 error-404.php [NC,L]
+
+#RewriteRule ^blogs update.php [NC,L]
+RewriteRule ^about-us about.php [NC,L]
+RewriteRule ^services service.php [NC,L]
+
+RewriteRule ^featured featured.php [NC,L]
+RewriteRule ^award award.php [NC,L]
+RewriteRule ^career career.php [NC,L]
+RewriteRule ^contact-us contact.php [NC,L]
+
+
+
+
+
+
+
+

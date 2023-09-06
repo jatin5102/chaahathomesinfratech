@@ -1,0 +1,490 @@
+<?php include 'include/config.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Career at Chaahat Homes - Chaahat Homes Pvt. Ltd.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Career at Chaahat Homes - Chaahat Homes Pvt. Ltd."/>
+<meta name="twitter:title" content="Career at Chaahat Homes - Chaahat Homes Pvt. Ltd." />
+
+<meta name="description" content="Talent is always welcome to Chaahat Homes. Chahat Holmes selects people for specific roles according to their experience and send your CV to us." />
+<meta property="og:description" content="Talent is always welcome to Chaahat Homes. Chahat Holmes selects people for specific roles according to their experience and send your CV to us." />
+<meta name="twitter:description" content="Talent is always welcome to Chaahat Homes. Chahat Holmes selects people for specific roles according to their experience and send your CV to us." />
+
+<meta name="keywords" content="Chahaat Homes, Real Estate Consultant,Property Advisor Gurgaon" />
+<meta name="ROBOTS" content="index, follow"/>
+<meta name="ROBOTS" content="ALL"/>
+<meta name="Slurp" content="index,follow,archive" />
+<meta name="robots" content="NOODP" />
+<meta name="geo.region" content="IN" />
+<meta name="allow-search" content="yes" />
+<meta name="revisit-after" content="daily" />
+<meta name="distribution" content="global" />
+<meta name="expires" content="never" />
+<meta name="author" content="Chahaat Homes">
+<meta property="og:site_name" content="Chaahat Homes">
+<meta property="og:url" content="https://chaahathomesinfratech.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://chaahathomesinfratech.com/<?= BASE_URL ?>assets/images/logo.png">
+<meta name="twitter:card" content="summary_large_image" />
+
+
+<meta name="twitter:site" content="@HomesChaahat" />
+<meta name="twitter:image" content="https://chaahathomesinfratech.com/<?= BASE_URL ?>assets/images/logo.png" />
+<meta name="twitter:creator" content="@HomesChaahat" />
+
+  <link rel="canonical" href="https://chaahathomesinfratech.com/">
+ <!--End Twitter Cards-->
+<!--SEO Tags-->
+<script type="application/ld+json">
+{ "@context" : "https://schema.org",
+  "@type" : "Organization",
+  "legalName" : "Chaahat Homes Infratech Pvt Ltd.",
+  "url" : "https://chaahathomesinfratech.com",
+  "logo" : "https://chaahathomesinfratech.com/<?= BASE_URL ?>assets/images/logo.png",
+"description": "At Chaahat Homes Infratech Pvt Ltd, we are best Real Estate Company in company, India offers Residential and Commercial Property in Gurgaon, India.",
+"sameAs" : [ "https://www.facebook.com/Chaahathomesgurgaon/",
+          "https://twitter.com/HomesChaahat",
+          "https://www.instagram.com/chaahat_homes_infratech/",
+          "https://www.linkedin.com/company/chaahat-homes-infratech-pvt-ltd/" ]
+}
+</script>
+
+<link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/x-icon">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176295333-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-176295333-1');
+</script>
+	<link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/x-icon">
+    <!-- CSS Files
+    ================================================== -->
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/jpreloader.css" type="text/css">
+    <link rel="stylesheet" href="css/animate.css" type="text/css">
+    <link rel="stylesheet" href="css/plugin.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.theme.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.transitions.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <!-- custom background -->
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+
+    <!-- color scheme -->
+    <link rel="stylesheet" href="css/colors/yellow.css" type="text/css" id="colors">
+    <link rel="stylesheet" href="css/color.css" type="text/css">
+
+    <!-- load fonts -->
+    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="fonts/elegant_font/HTML_CSS/style.css" type="text/css">
+    <link rel="stylesheet" href="fonts/et-line-font/style.css" type="text/css">
+
+    <!-- revolution slider -->
+    <link rel="stylesheet" href="rs-plugin/css/settings.css" type="text/css">
+    <link rel="stylesheet" href="css/rev-settings.css" type="text/css">
+
+    <!-- custom font -->
+	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PHJKBF3');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+
+<body id="homepage">
+
+    <div id="wrapper">
+
+        <header class="header-mobile NewColor">
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- logo begin -->
+                        <div id="logo">
+                            <a href="/">
+                                <img class="logo" src="<?= BASE_URL ?>assets/images/logo.png" alt="Chaahat Homes">
+                            </a>
+                        </div>
+                        <!-- logo close -->
+
+                        <!-- small button begin -->
+                        <span id="menu-btn"> &nbsp; MENU</span>
+                        <!-- small button close -->
+
+                        <!-- mainmenu begin -->
+                        <nav>
+                            <ul id="mainmenu">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="service.html">Services</a></li>
+                                <li><a href="#">Listed Properties</a>
+                                    <ul>
+                                        <li><a href="featured.html">Featured</a></li>
+                                        <li><a href="residential-property-in-gurgaon.html">Residential</a></li>
+                                        <li><a href="commercial.html">Commercial</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="award.html">Awards &amp; Recognization</a></li>
+                                <li><a href="carrer.html">Career</a></li>
+								  <li><a href="Blog">Blog</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+
+                            </ul>
+                        </nav>
+                        <!-- mainmenu close -->
+
+                    </div>
+
+
+                </div>
+            </div>
+        </header>
+
+        <!-- content begin -->
+        <div id="content" class="no-bottom no-top">
+
+            <!-- revolution slider begin -->
+
+            <section class="banner-sec">
+                <div class="banner-img">
+                    <div class="overlay"></div>
+                    <img class="img-fluid" src="<?= BASE_URL ?>assets/images/career.jpg">
+                    <div class="banner-content inter-banner-content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="banner-text inter-banner-text">
+
+                                        <h2>Career</h2>
+                                        <span class="decor-equal"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- revolution slider close -->
+
+            <!-- section begin -->
+            <section>
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-md-12 wow fadeInUp">
+                            <div class="why-us-sec">
+                                <h2>Why Chaahat Homes Infratech Pvt. Ltd.</span>
+                                </h2>
+                            </div>
+                            <div class="contact-text">
+
+
+                                <p class="text-justify">Our success is based on the ingenuity and dedication of our talented and motivated team players. Known for our integrity, client service and entrepreneurial spirit, Chaahat Homes has a supportive and dynamic work environment
+                                    that inspires its employees to grow and excel. As a flexible organization, Chaahat Homes offers ample opportunities to its employees to grow & prosper. With the company’s intense geographical & vertical bandwidths along
+                                    with a network for associated channel partners, employees are increasingly entrusted with cross functional responsibilities & global opportunities.</p>
+
+                                <h5>Apply Here for Jobs</h5>
+                                <h5><i class="fa fa-envelope-open-o" aria-hidden="true"></i>&nbsp; <a href="#">chaahathomes@gmail.com</a> </h5>
+
+                            </div>
+                            <br><br>
+
+                        </div>
+                        <div class="col-md-6 wow fadeInLeft">
+                            <div class="why-us-sec">
+                                <h2> Apply Online</span>
+                                </h2>
+                            </div>
+                            <div class="contact-form-sec">
+                                <form action="contactus" method="post">
+                                    <div class="form-group">
+                                        <label for="name">Your Name *</label>
+                                        <input type="text" class="form-control" placeholder="Name" id="Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email address *</label>
+                                        <input type="text" class="form-control" placeholder="E-Mail ID" id="E-Mail ID">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Phone Number *</label>
+                                        <input type="text" class="form-control" placeholder="Phone Number" id="phone-number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Position *</label>
+                                        <select class="form-control" id="">
+                                        <option selected="">Open this select menu</option>
+                                        <option value="Appraiser">Appraiser</option>
+                                        <option value="Appraisal Manager">Appraisal Manager</option>
+                                        <option value="Real Estate Appraiser">Real Estate Appraiser</option>
+                                        <option value="Licensed Real Estate Appraiser">Licensed Real Estate Appraiser</option>
+                                        <option value="Real Estate Sales">Real Estate Sales</option>
+                                       </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Current Company *</label>
+                                        <input type="text" class="form-control" placeholder="Current Company" id="Company">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Resume *</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                                            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-warning" style="border-radius: 0;" onclick="">Submit</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow fadeInRight d-flex justify-content-center align-items-center">
+                            <img src="<?= BASE_URL ?>assets/images/hire.png" alt="hire" class="img-fluid">
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- footer begin -->
+        <footer>
+            <div class="container newDiv">
+                <div class="row">
+                    <div class="col-md-6 border-right border-white">
+                        <img src="<?= BASE_URL ?>assets/images/logo.png" class="logo-small" alt="Chaahat Homes"><br>Chaahat homes was Established in 2007, Chaahat Homes Infratech Pvt Ltd is the preffered real estate ipa (indian property associate ) of gurgaon for the commercial and residential
+                        spaces with the perfect investment oppurtunity and excellent service.
+                    </div>
+
+                    <div class="col-md-2 border-right border-white">
+                        <div class="widget widget_recent_post">
+                            <h3>Social Links</h3>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/Chaahathomesgurgaon/" target="_blank"><i class="fa fa-facebook fa-lg"></i> Facebook</a>
+                                <a href="https://twitter.com/HomesChaahat" target="_blank"><i class="fa fa-twitter fa-lg"></i> Twitter</a>
+                                <a href="https://www.instagram.com/chaahat_homes_infratech/" target="_blank"><i class="fa fa-instagram fa-lg"></i> Instagram</a>
+                                <a href="https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F13658496%2Fadmin" target="_blank"><i class="fa fa-linkedin fa-lg"></i> LinkedIn</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h3>Contact Us</h3>
+                        <div class="widget widget-address">
+                            <address>
+                                 <span> <b> Chaahat Homes Infratech Pvt. Ltd. </b><br>
+                                    M3M Tee Point, South Block, 6th Floor, Sector 65 <br>
+                                    Gurugram, Haryana 122002</span>
+                                <span><strong>Phone:</strong>  <a  href="tel:9810277378"> +91-9810277378</a></span>
+                                <!--                                    <span><strong>Fax:</strong>(208) 333 9298</span>-->
+                                <span><strong>Email:</strong><a href="mailto:chaahathomes@gmail.com">chaahathomes@gmail.com</a></span>
+                                <span><strong>Web:</strong><a href="https://chaahathomesinfratech.com/">https://chaahathomesinfratech.com/</a></span>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            &copy; Copyright 2022 - Chaahat Homes. ALL RIGHTS RESERVED. <br> WEBSITE DESIGNED & DEVELOPMENT BY
+                            <a href="http://www.gtftechnologies.com/"> <span class="id-color">GTF TECHNOLOGIES</span></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <a href="#" id="back-to-top"></a>
+        </footer>
+        <!-- footer close -->
+    </div>
+
+
+    <div class="mobile-section">
+
+        <!-- <a href="https://api.whatsapp.com/send?phone=+91-9810277378 &amp;text=Hello, Looking for Chaahat Homes Infratech Pvt Ltd. Get in touch with me my name is" class="btn btn-success">  Whats App</a> -->
+         <a href="" class="btn btn-success" title="Enquire Now" data-toggle="modal" data-target="#myModal2">Enquire Now</a>
+         <a href="tel:+91-9810277378" class="btn btn-success">  Tap To Call</a> </div>  
+<script>
+        $(document).ready(function() {
+
+            $(window).scroll(function() {
+                if ($(window).width() < 768 && $(this).scrollTop() > 300) {
+                    $(".mobile-section").show();
+                } else {
+                    $(".mobile-section").hide();
+                }
+
+            });
+
+        })
+    </script> 
+
+
+
+<div class="modal enquiry-model modal-fade" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content"> 
+        
+        <!-- Modal Header --> 
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" style="margin-right: 0px;
+                              padding: 0 10px"> &times;</button>
+          <div class="modal-body text-center" style=" padding: 10px!important; margin-top: 15px!important"> <span id="spanQueryMsg" style="color: Green; font-size: 15px"></span> <img id="proimg" src="<?= BASE_URL ?>assets/images/logo.png" alt="Chaahat Homes" style="width: 110px;">
+            <p class="text-center" style="color: #3c3259; font-size: 16px; margin-top: 10px; font-weight:600; text-transform: uppercase;
+      margin-bottom: 15px;"> <span id="projectname">Chaahat Homes Infratech</span></p>
+           <!--  <p style="text-align: center; color: #ec0000; font-size: 16px; margin-bottom: 10px; font-weight:600; letter-spacing:0.5px;"> <span id="projectlocation">Gurgaon</span> </p> -->
+            <div id="divFormMainPop">
+              <div class="input-group pop-frm-hght"> <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" name="txtNameForm" id="qSenderNamemodal2" style="border: 1px solid #ccc;
+                                      height: 40px; margin: 0" class="form-control pop-frm-hght" height="auto" placeholder="Enter Name" maxlength="200" required>
+              </div>
+              <br>
+              <div class="input-group pop-frm-hght"> <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                <input type="number" name="txtMobileForm" id="qMobileNomodal2" class="form-control pop-frm-hght movsection" maxlength="100" placeholder="Mobile No" required style="height:40px;">
+              </div>
+              <br>
+              <div class="input-group pop-frm-hght"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <input type="email" name="txtEmailForm" id="qEmailIDmodal2" class="form-control pop-frm-hght" maxlength="200" placeholder="Email ID" required style="height:40px;">
+              </div>
+              <br>
+              <div class="input-group pop-frm-hght"> <span class="input-group-addon"><i class="fa fa-comment"></i></span>
+                <textarea class="form-control pop-frm-hght" name="txtMessageForm" id="qMessagemodal2" style="height: auto; margin: 0" value="Yes | I am interested" required>Yes | I am interested</textarea>
+              </div>
+              <br>
+              <div class="col-sm-12" style="margin: 0; padding: 0"> <span id="button">
+                <input type="submit" id="SubmitQuerymodal2" style="color: #fff; background-color: #ec0000; margin-bottom:0px" class="btn btn btn-default btn-block popup-btn pop-frm-hght" value="SUBMIT">
+                </span> </div>
+              <br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-xs-12"> <span id="msg" style="color:green;text-align:center"></span> </div>
+          </div>
+          
+          <!-- Modal footer --> 
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jpreLoader.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/easing.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/jquery.scrollto.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/jquery.countTo.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/video.resize.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="https://api2.gtftech.com/Scripts/queryform.min.ssl.js"></script> 
+    <script src="js/designesia.js"></script>
+
+    <!-- SLIDER REVOLUTION SCRIPTS  -->
+    <script src="rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+ <!--from script start-->
+ 
+<script>
+    var AgentInfo = {
+        "vAgentID": "4421",
+        "vProject": "Chaahat Homes Infratech",
+        "vURL": "http://www.chaahathomesinfratech.com",
+        "thankspageurl": "http://www.chaahathomesinfratech.com/thanks.htm",
+    };
+  
+    $('#preferedtime').hide();
+  
+    $("#SubmitQuery").click(function () {
+        var FormInfo = {
+            "SenderControlID": "qSenderName",
+            "SenderControlMobileID": "qMobileNo",
+            "SenderControlEmailID": "qEmailID",
+            "SenderControlMsgID": "qMessage"
+        };
+  
+        SubmitQueryData(AgentInfo, FormInfo);
+    });
+  
+    
+    $("#SubmitQueryfooter").click(function () {
+        var FormInfo = {
+            "SenderControlID": "qSenderNamefooter",
+            "SenderControlMobileID": "qMobileNofooter",
+            "SenderControlEmailID": "qEmailIDfooter",
+            "SenderControlMsgID": "qMessagefooter"
+        };
+  
+        SubmitQueryData(AgentInfo, FormInfo);
+    });
+  
+    $("#SubmitQuerymodal2").click(function () {
+        var FormInfo = {
+            "SenderControlID": "qSenderNamemodal2",
+            "SenderControlMobileID": "qMobileNomodal2",
+            "SenderControlEmailID": "qEmailIDmodal2",
+            "SenderControlMsgID": "qMessagemodal2"
+        };
+  
+        SubmitQueryData(AgentInfo, FormInfo);
+    });
+  
+    $("#SubmitQuerymodal3").click(function () {
+        var FormInfo = {
+            "SenderControlID": "qSenderNamemodal3",
+            "SenderControlMobileID": "qMobileNomodal3",
+            "SenderControlEmailID": "qEmailIDmodal3",
+            "SenderControlMsgID": "qMessagemodal3"
+        };
+  
+        SubmitQueryData(AgentInfo, FormInfo);
+    });
+    </script> 
+    
+    <!--FORM SCRIUPT END-->
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHJKBF3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+</body>
+
+
+</html>

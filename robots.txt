@@ -1,0 +1,31 @@
+User-agent: *
+Disallow: /thanks.htm
+Disallow: /disclaimer.html
+Disallow: /nri
+Disallow: /AwardsRecognition
+Disallow: /detail/Elan-Miracle
+Disallow: /detail/Hero-Homes
+Disallow: /detail/Eldeco-Accolade
+Disallow: /detail/Tata-Gurgaon-gateway
+Disallow: /detail/DLF-Sky-Court
+Disallow: /detail/Satya-The-Hive
+Disallow: /detail/AIPL-Joy-Square
+Disallow: /detail/M3M-Urbana-Premium
+Disallow: /detail/Puri-Emerald-Bay
+Disallow: /detail/Shapoorji-Pallonji-JoyVille
+Disallow: /search?city=
+Disallow: /detail/Aipl-Joy-Central
+Disallow: /detail/Central-Park-The-Room
+Disallow: /detail/Godrej-Nature-Plus-two
+Disallow: /residential.html
+Disallow: /detail/IREO-Victory-Valley
+Disallow: /detail/Ashiana-Mulberry
+Disallow: /<?= BASE_URL ?>assets/images/aipljoysquare/construction-3.jpg
+Disallow: /detail/M3M-Cosmopolitan
+Disallow: /opiniondetail/Supertech-Capetown-to-entice-the-residents-of-Noida
+
+
+
+Sitemap: https://chaahathomesinfratech.com/sitemap.xml
+
+
