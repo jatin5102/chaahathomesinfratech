@@ -235,7 +235,7 @@
         
   </div><!----------left-area--------->
 
-  <div class="right-area">
+  <div class="right-area fasfasdf">
     <div class="inner-left">
       <div class="box">
          <h6><i class="fa fa-envelope-open" aria-hidden="true"></i> Latest Query</h6> 

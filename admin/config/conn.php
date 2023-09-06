@@ -2,8 +2,8 @@
 
 
 <?php
-define('BASE_URL','http://localhost/chaahathomesinfratech/');
-define('ADMIN_ASSETS','http://localhost/chaahathomesinfratech/admin/uploads/');
+define('BASE_URL','http://localhost/chaahathomesinfratech-merged/');
+define('ADMIN_ASSETS','http://localhost/chaahathomesinfratech-merged/admin/uploads/');
 
 // $servername = "sg2nlmysql1plsk.secureserver.net";
 // $username = "CapitalBoonPhP";
