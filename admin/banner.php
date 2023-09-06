@@ -72,7 +72,7 @@
 							<th>Banners</th>
 							<th>Video Url</th>
 							<th>Edit</th>
-							<th>Delete</th>
+							<th>Delesssste</th>
 						</tr>
 					</thead>
 					<tbody>
