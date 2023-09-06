@@ -1,41 +1,43 @@
 <?php 
 	include_once '../../config/conn.php';
+	include_once '../../include/function.php';
 
-	$id = $_POST['id'];
-	$name = $_POST['name'];
-	
-	if(isset($_FILES['image'])){
-		$image = $_FILES['image']['name'];
-		$image_tmp = $_FILES['image']['tmp_name'];
-		$oldImage = $_POST['oldImage'];
+	$eid=encryptor('decrypt',$_POST['eid']);
 
-		$temp_name = '';
-		if($_POST['oldImage'] != ''){
-			$temp_name = $_POST['oldImage'];
-			
-		}else{
-			$rand = rand();
-			$extension = pathinfo($image, PATHINFO_EXTENSION);
-			$newName = 'testimonials-'.$rand.'.'.$extension;
-			$temp_name = $newName;
-		}
-		$location = '../../uploads/testimonials/'.$temp_name;
-		move_uploaded_file($image_tmp, $location);
-		$updated_image = $temp_name;
-		
-	}else{
-		$updated_image = $_POST['oldImage'];
-		
+	$validator=array();
+	$error=0;
+	if(empty($_POST['testimonials_update_name'])){
+		$validator['testimonials_update_name']="This fields is required";
+		$error=1;
 	}
 
-$designation = $_POST['designation'];
-$description = mysqli_real_escape_string($conn, $_POST['description']);
+	if(empty($_POST['testimonials_update_designation'])){
+		$validator['testimonials_update_designation']="This fields is required";
+		$error=1;
+	}
+
+
+	if(empty($_POST['testimonials_update_paragraph'])){
+		$validator['testimonials_update_paragraph']="This fields is required";
+		$error=1;
+	}
+
 	
-$sql = "UPDATE testimonials_emp SET name='$name', image='$updated_image', description='$description', designation='$designation' WHERE id='$id'";
-$result = mysqli_query($conn, $sql);
+	
 
-if(!$result){
-	die('Query failed '.mysqli_error($conn));
-}
+	if($error == 0){
+		$designation = mysqli_real_escape_string($conn, $_POST['testimonials_update_designation']);
+		$description = mysqli_real_escape_string($conn, $_POST['testimonials_update_paragraph']);
+		$query = mysqli_query($conn, "UPDATE testimonials_emp SET name='".$_POST['testimonials_update_name']."', description = '$description', designation = '$designation' WHERE id = '$eid'");
 
+		if($query == 1){
+			echo json_encode(['status'=>1, 'message'=>'Your data has been Updated successfully!']);
+		}else{
+			echo json_encode(['status'=> 0, 'message'=> 'Something went wrong']);
+		}
+	}else{
+		echo json_encode(['status'=> 3, 'message'=> 'Please Fill Mandatory Fields', 'errors'=>$validator]);
+	}
+
+	
 ?>

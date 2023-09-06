@@ -82,7 +82,7 @@
                   echo "<tr>";
                   echo "<td><h6>".$name."</h6></td>";
                   echo "<td><a href='javascript:void(0)' class='editTestimoindals' dataid='".encryptor('encrypt', $id)."' ><i class='fa fa-pencil'  aria-hidden='true'></i></a></td>";
-                  echo "<td><a href='javascript:void(0)' onclick=deleteTestimonial($id)><i class='fa fa-times' aria-hidden='true'></i></a></td>";
+                  echo "<td><a href='javascript:void(0)' class='deleteTestimonials' dataid='".encryptor('encrypt', $id)."'><i class='fa fa-times' aria-hidden='true'></i></a></td>";
                   echo "</tr>";
                 }
                 ?>
@@ -95,7 +95,7 @@
     </div>
        <hr>
   </div>
-  <div class="modal fade zoomIn" id="updaemicrobanners" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal fade zoomIn" id="updateTestimonials" tabindex="-1" style="display: none;" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content border-0">
           <div class="modal-header p-3 bg-soft-success">
@@ -103,7 +103,7 @@
               <button type="button" class="fa fa-times" data-dismiss="modal" id="addProjectBtn-close" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" id="updateothermicrodata">
+            <form action="" id="updateTestimonials" method="POST">
                 <div class="form-group">
                   <input type="hidden" id="testimonials_update_id"/>
                   <div class="mb-2">
@@ -119,7 +119,7 @@
                     <input type="text" name="testimonials_update_paragraph" id="testimonials_update_paragraph" class="form-control">
                   </div>
                 </div>
-              <button class="btn btn-sm btn-info">Submit</button>
+              <button class="btn btn-sm btn-info" type="submit">Submit</button>
             </form>
           </div>
         </div>
@@ -172,156 +172,99 @@
       })
   });
 
-$(document).on('click','.editTestimoindals',function(){
-debugger;
+  $(document).on('click','.editTestimoindals',function(){
+  // debugger;
 
-  var dataid=$(this).attr('dataid'); 
-  
-  $.ajax({
-    url:'ajax/testimonials/ajax-testimonials-edit.php',
-    type:'post',
-    data: {'id':dataid},
-    success:function(res){
-      var jsonData = JSON.parse(res);
-      if(jsonData.status==1){
-        row=jsonData['data'];
-
-    
-      $('#testimonials_update_name').val(row['name']);
-      $('#testimonials_update_designation').val(row['designation']);
-      $('#testimonials_update_paragraph').val(row['description']);
-    }else{ 
-      alert(data.message);
-    }
-    }
-  });
-
-
-  $(document).on('submit','#updateothermicrodata',function(){
-
-
-    e.preventDefault(0);
-    var formData = new FormData(this);
-    formData.append('eid',dataid);
-    // debugger;
+    var dataid = $(this).attr('dataid'); 
     $.ajax({
-		url : 'ajax/microsite/ajax-microsite-project-update.php',
-        type: "POST",
-        data: formData,
-        dataType: 'json',
-        contentType: false,
-        cache: false,
-        processData: false,
-        enctype: 'multipart/form-data',
-        success : function(resp){
+      url:'ajax/testimonials/ajax-testimonials-edit.php',
+      type:'post',
+      data: {'id':dataid},
+      success:function(res){
+        var jsonData = JSON.parse(res);
+        if(jsonData.status==1){
+          row=jsonData['data'];
+
+      
+        $('#testimonials_update_name').val(row['name']);
+        $('#testimonials_update_designation').val(row['designation']);
+        $('#testimonials_update_paragraph').val(row['description']);
+      }else{ 
+        alert(data.message);
+      }
+      }
+    });
+
+
+    $("#updateTestimonials").modal('show');
+
+
+    $(document).on('submit','#updateTestimonials', function(e){
+      e.preventDefault(0);
+      var formData = new FormData(this);
+      formData.append('eid',dataid);
+
+      $.ajax({
+      url : 'ajax/testimonials/ajax-testimonials-update.php',
+          type: "POST",
+          data: formData,
+          dataType: 'json',
+          contentType: false,
+          cache: false,
+          processData: false,
+          enctype: 'multipart/form-data',
+          success : function(resp){
             var data=JSON.parse(JSON.stringify(resp));
-        if(data.status==3){
-            $('.errors').remove();
-            var keys = Object.keys(data.errors);
-            for (let index = 0; index < keys.length; index++) {
-               var keynam=keys[index];
-                $('#'+keynam).after('<p class="errors">'+data.errors[keynam]+'<p>');
-                    if(index==0){
-                        $('#'+keynam).focus();
-                    }
-            }
-            alert(data.message);
+            if(data.status==3){
+                $('.errors').remove();
+                var keys = Object.keys(data.errors);
+                for (let index = 0; index < keys.length; index++) {
+                  var keynam=keys[index];
+                    $('#'+keynam).after('<p class="errors">'+data.errors[keynam]+'<p>');
+                        if(index==0){
+                            $('#'+keynam).focus();
+                        }
+                }
+                alert(data.message);
+                $("#updateTestimonials").modal('show');
 
-        }else if(data.status==1){
-            window.location.href="Project-list.php";
-            alert(data.message);
-
-
-        }else{
+            }else if(data.status==1){
                 window.location.reload();
                 alert(data.message);
-        }
-       
-        }
-    })
 
-  });
-  $("#updaemicrobanners").modal('show');
+            }else if(data.status == 0){
+              window.location.reload();
+              alert(data.message);
+            }else{
+                    window.location.reload();
+                    alert(data.message);
+            }
 
+          }
+      })
 
-
-
-
-
-
-
+    });
 
 });
-</script>
 
-<script>
+$(document).on('click', '.deleteTestimonials', function(){
+  var dataid=$(this).attr('dataid');
+		$.ajax({
+			url : 'ajax/testimonials/ajax-testimonials-delete.php',
+			type : 'POST',
+			data : {'dataid' : dataid},
+			success : function(resp){
+					var data=JSON.parse(resp);
+					if(data.status==1){
+						window.location.reload();
+            alert(data.message);
+					}else if(data.status == 0){
+            window.location.reload();
+            alert(data.message);
+          }
+					
+			}
+		});
 
-function editTestimonial(id){
-  $('#testimonials_update_id').val(id);
-  $.ajax({
-    url:'ajax/testimonials/ajax-testimonials-edit.php',
-    type:'post',
-    data: {'id':id},
-    success:function(data){
-      var jsonData = JSON.parse(data)
-      $('#testimonials_update_name').val(jsonData.name)
-      $('#testimonials_update_designation').val(jsonData.designation)
-      $('#testimonials_update_paragraph').val(jsonData.description)
-    }
-  })
-}
-
-function deleteTestimonial(id){
-  $(".loader-icon-head").css('display', 'flex');
-  $.ajax({
-    url:'ajax/testimonials/ajax-testimonials-delete.php',
-    type:'post',
-    data:{'id':id},
-    success:function(data){
-      $(".loader-icon-head").css('display', 'none');
-      window.location.reload()
-    }
-  })
-}
-
-//Update testimonials //
-$('#update').on('click',function(){
-
-  var id = $('#hiddenId').val()
-  var oldImage = $('#oldImage').val()
-  var name = $('#name').val()
-  var image = $('#image')[0].files[0]
-  var designation = $('#designation').val()
-  var description = $('#description').val()
-
-  var fd = new FormData()
-  fd.append('id', id)
-  fd.append('name', name)
-  fd.append('image', image)
-  fd.append('oldImage', oldImage)
-  fd.append('designation', designation)
-  fd.append('description', description)
-  $(".loader-icon-head").css('display', 'flex');
-  $.ajax({
-    url:'ajax/testimonials/ajax-testimonials-update.php',
-    type:'post',
-    data: fd,
-    contentType:false,
-    processData:false,
-    success:function(data){
-    // $('#name').val('')
-    // $('#image').val('')
-    // $('#oldImage').val('')
-    // $('#designation').val('')
-    // $('#description').val('')
-    // $('#update').hide()
-    // $('#submit').show()
-    $(".loader-icon-head").css('display', 'none');
-    window.location.reload()
-    // console.log(data)
-    }
-  })
-})
-
-
+});
 </script>

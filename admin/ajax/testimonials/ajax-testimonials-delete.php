@@ -1,24 +1,15 @@
 <?php 
 	include_once '../../config/conn.php';
+	include_once '../../include/function.php';
 
 
-$id = $_POST['id'];
-
-$sqlSelect = "SELECT * FROM testimonials_emp WHERE id='$id'";
-$result1 = mysqli_query($conn,$sqlSelect);
-
-$row = mysqli_fetch_assoc($result1);
-$image = $row['image'];
-
-unlink('../../uploads/testimonials/'.$image);
-
-
-$sql = "DELETE FROM testimonials_emp wHERE id='$id'";
-$result = mysqli_query($conn,$sql);
-
-if(!$result){
-	die('Query failed '.mysqli_error($conn));
-}
-
+	$dataid=encryptor('decrypt',$_POST['dataid']);
+	
+	$delete_query = mysqli_query($conn, "DELETE FROM `testimonials_emp` WHERE id=".$dataid."");
+	if($delete_query == 1){
+		echo json_encode(['status'=>1,'message'=>"Deleted Successfully"]);
+	}else{
+		echo json_encode(['status'=>0,'message'=>"Something went wrong!"]);
+	}
 
 ?>
