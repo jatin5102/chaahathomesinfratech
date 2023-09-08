@@ -448,6 +448,183 @@
 					echo json_encode(['status'=>0,'message'=>"Somthin went wrong"]);
 				}
 	
+			}elseif($_GET['action'] == 'addservices'){
+
+				$validator = array();
+				$error = 0;
+ 
+				if(empty($_FILES['thumbnail']['name'])){
+					$validator['thumbnail'] = 'This field is required!';
+					$error = 1;
+				}
+
+				if(empty($_FILES['feature']['name'])){
+					$validator['feature'] = 'This field is required!';
+					$error = 1;
+				}
+
+				if(empty($_POST['heading'])){
+					$validator['heading']="This fields is required";
+					$error=1;
+				}
+
+				if(empty($_POST['ckservices'])){
+					$validator['ckservices']="This fields is required";
+					$error=1;
+				}
+
+				if($error == 0 ){
+					$meta_thumbnail="";
+					if(!empty($_FILES['thumbnail']['name'])){
+						$meta_logo = $_FILES['thumbnail'];
+						$meta_logo_name = $_FILES['thumbnail']['name'];
+						$meta_logo_tmp_name = $_FILES['thumbnail']['tmp_name'];
+						$image_ext = pathinfo($meta_logo_name, PATHINFO_EXTENSION);
+						
+						$brochure_date = time();
+						$new_brochure = "service-thumbnail-$brochure_date.$image_ext";
+						
+						$meta_thumbnail = "uploads/services/$new_brochure";
+						if(move_uploaded_file($meta_logo_tmp_name, $meta_thumbnail)){
+						
+						}
+					}
+
+					$meta_feature = "";
+					if(!empty($_FILES['feature']['name'])){
+						$meta_logo = $_FILES['feature'];
+						$meta_logo_name = $_FILES['feature']['name'];
+						$meta_logo_tmp_name = $_FILES['feature']['tmp_name'];
+						$image_ext = pathinfo($meta_logo_name, PATHINFO_EXTENSION);
+						
+						$brochure_date = time();
+						$new_brochure = "service-feature-$brochure_date.$image_ext";
+						
+						$meta_feature = "uploads/services/$new_brochure";
+						if(move_uploaded_file($meta_logo_tmp_name, $meta_feature)){
+						
+						}
+					}
+					
+					
+					$query = mysqli_query($conn, "INSERT INTO `services`(`page_url`, `meta_title`, `meta_keywords`, `meta_description`, `feature`, `feature_alt_tag`, `thumbnails`, `thumbnail_alt_tag`, `title`, `description`) VALUES ('".$_POST['pageurl']."','".$_POST['ServiceMetaTilte']."','".$_POST['ServiceMetaKeyword']."','".$_POST['ServiceMetadescription']."','$meta_feature','".$_POST['featureAlt']."','$meta_thumbnail','".$_POST['thumbnailAlt']."','".$_POST['heading']."','".$_POST['ckservices']."')");
+					if($query == 1){
+						echo json_encode(['status'=>1, 'message'=>"Your data has been submited successfully!"]);
+					}else{
+						echo json_encode(['status'=>0, 'message' => "Something went wrong"]);
+					}
+				}else {
+					
+					echo json_encode(['status'=>3, 'message'=> "Please Fill Mandatory Fields", 'errors' => $validator]);
+					
+				}
+
+
+			}elseif($_GET['action'] == 'updateservices'){
+				
+				$eid =  encryptor('decrypt',$_POST['updateserviceId']);				
+				$validator = array();
+				$error = 0;
+
+				if(empty($_POST['heading'])){
+					$validator['heading']="This fields is required";
+					$error=1;
+				}
+
+				if(empty($_POST['ckservices'])){
+					$validator['ckservices']="This fields is required";
+					$error=1;
+				}
+
+				if($error == 0){
+					
+
+					$meta_thumbnail = '';
+					if(!empty($_FILES['thumbnail']['name'])){
+						$meta_logo = $_FILES['thumbnail'];
+						$meta_logo_name = $_FILES['thumbnail']['name'];
+						$meta_logo_tmp_name = $_FILES['thumbnail']['tmp_name'];
+						$image_ext = pathinfo($meta_logo_name, PATHINFO_EXTENSION);
+						
+						$brochure_date = time();
+						$new_brochure = "service-thumbnail-$brochure_date.$image_ext";
+						
+						$meta_thumbnail = "uploads/services/$new_brochure";
+						if(move_uploaded_file($meta_logo_tmp_name, $meta_thumbnail)){
+						
+						}
+					}else{
+						$meta_thumbnail = $_POST['old_thumbnail'];
+					}
+
+					$meta_feature = '';
+					if(!empty($_FILES['feature']['name'])){
+						$meta_logo = $_FILES['feature'];
+						$meta_logo_name = $_FILES['feature']['name'];
+						$meta_logo_tmp_name = $_FILES['feature']['tmp_name'];
+						$image_ext = pathinfo($meta_logo_name, PATHINFO_EXTENSION);
+						
+						$brochure_date = time();
+						$new_brochure = "service-feature-$brochure_date.$image_ext";
+						
+						$meta_feature = "uploads/services/$new_brochure";
+						if(move_uploaded_file($meta_logo_tmp_name, $meta_feature)){
+						
+						}
+					}else{
+						$meta_feature = $_POST['old_feature'];	
+					}
+
+					$meta_title = mysqli_real_escape_string($conn, $_POST['ServiceMetaTilte']);
+					$keywords = mysqli_real_escape_string($conn, $_POST['ServiceMetaKeyword']);
+					$meta_desc = mysqli_real_escape_string($conn,$_POST['ServiceMetadescription'] );
+					$thumbAlt = mysqli_real_escape_string($conn, $_POST['thumbnailAlt']);
+					$featureAlt = mysqli_real_escape_string($conn, $_POST['featureAlt']);
+					
+					
+					$sql = "UPDATE `services` SET `page_url`= '".$_POST['pageurl']."', `meta_title` = '$meta_title', `meta_keywords` = '$keywords', `meta_description` = '$meta_desc', `feature` = '$meta_feature', `feature_alt_tag`= '$featureAlt', `thumbnails` = '$meta_thumbnail', `thumbnail_alt_tag` = '$thumbAlt', `title`= '".$_POST['heading']."', `description`= '".$_POST['ckservices']."' WHERE id = $eid";
+					$query = mysqli_query($conn, $sql);
+					if($query == 1){
+						echo json_encode(['status'=>1, 'message'=>"Your data has been updated successfully!"]);
+					}else{
+						echo json_encode(['status'=>0, 'message'=>"Something went wrong"]);
+					}
+
+				}else{
+					echo json_encode(['status'=>3, 'message'=> "Please Fill Mandatory Fields", 'errors'=> $validator]);
+				}
+			}elseif($_GET['action'] == 'deleteservices'){
+
+				$dataid = encryptor('decrypt',$_POST['dataid']);
+
+				$checkrecord = mysqli_query($conn, "SELECT * FROM `services` WHERE id=".$dataid."");
+				if(mysqli_num_rows($checkrecord) > 0){
+					$data = mysqli_fetch_assoc($checkrecord);
+					$meta_feature = $data['feature'];
+					if (file_exists($meta_feature)){
+						if (unlink($meta_feature)){
+							
+						}
+					}
+
+					$meta_thumbnail = $data['thumbnails'];
+					if (file_exists($meta_thumbnail)){
+						if (unlink($meta_thumbnail)){
+							
+						}
+					}
+		
+					$query = mysqli_query($conn, "DELETE FROM `services` WHERE id=".$dataid."");
+
+					if($query == 1){
+						echo json_encode(['status'=>1,'message'=>"Deleted Successfully"]);
+					}else{
+						echo json_encode(['status'=>0,'message'=>"Somthin went wrong"]);
+					}
+		
+				}else{
+					echo json_encode(['status'=>0,'message'=>"Somthin went wrong"]);
+				}
 			}
 
 

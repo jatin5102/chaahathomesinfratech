@@ -8,10 +8,10 @@
 		$error=1;
 	}
 
-	if(empty($_POST['designation'])){
-		$validator['designation']="This fields is required";
-		$error=1;
-	}
+	// if(empty($_POST['designation'])){
+	// 	$validator['designation']="This fields is required";
+	// 	$error=1;
+	// }
 
 
 	if(empty($_POST['description'])){

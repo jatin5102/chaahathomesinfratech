@@ -1,52 +1,9 @@
 <?php include 'include/config.php'; ?>
+<?php include_once 'include/functions.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <title>Aipl Joy Central | Aipl Joy Central Main Golf Course | Aipl Joy Central Sec-65 Gurgaon</title>
-  <meta name="description"
-    content="Aipl Joy Central Gurgaon: A High Street Retail Shops, Office Spaces that are low maintenance and Multiplex bang on Main Golf Course Extension Road, Sec-65 Gurgaon. It is the only retail hub for thousands of affluent families in Gurgaon and much more at Sector 65 Gurgaon." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta property="og:title"
-    content="Aipl Joy Central | Aipl Joy Central Main Golf Course | Aipl Joy Central Sec-65 Gurgaon" />
-  <meta name="twitter:title"
-    content="Aipl Joy Central | Aipl Joy Central Main Golf Course | Aipl Joy Central Sec-65 Gurgaon" />
-
-  <meta property="og:description"
-    content="Aipl Joy Central Gurgaon: A High Street Retail Shops, Office Spaces that are low maintenance and Multiplex bang on Main Golf Course Extension Road, Sec-65 Gurgaon. It is the only retail hub for thousands of affluent families in Gurgaon and much more at Sector 65 Gurgaon." />
-  <meta name="twitter:description"
-    content="Aipl Joy Central Gurgaon: A High Street Retail Shops, Office Spaces that are low maintenance and Multiplex bang on Main Golf Course Extension Road, Sec-65 Gurgaon. It is the only retail hub for thousands of affluent families in Gurgaon and much more at Sector 65 Gurgaon." />
-
-  <meta name="keywords"
-    content="Aipl Joy Central Gurgaon, Aipl Joy Central, Aipl Joy Central Sector 65, Aipl Joy Central Sector 65 Gurgaon" />
-  <meta name="ROBOTS" content="index, follow" />
-  <meta name="ROBOTS" content="ALL" />
-  <meta name="Slurp" content="index,follow,archive" />
-  <meta name="robots" content="NOODP" />
-  <meta name="geo.region" content="IN" />
-  <meta name="allow-search" content="yes" />
-  <meta name="revisit-after" content="daily" />
-  <meta name="distribution" content="global" />
-  <meta name="expires" content="never" />
-  <meta name="author" content="Chahaat Homes">
-  <meta property="og:site_name" content="Chaahat Homes">
-  <meta property="og:url" content="https://chaahathomesinfratech.com/">
-
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://chaahathomesinfratech.com/<?= BASE_URL ?>assets/images/logo.png">
-  <meta name="twitter:card" content="summary_large_image" />
-
-
-  <meta name="twitter:site" content="@HomesChaahat" />
-  <meta name="twitter:image" content="https://chaahathomesinfratech.com/<?= BASE_URL ?>assets/images/logo.png" />
-  <meta name="twitter:creator" content="@HomesChaahat" />
-
-
-  <?php  include 'include/css-url.php'; ?>
-
-</head>
+    <?php include 'include/css-url.php'; ?>
 
 <body id="homepage">
   <div id="wrapper">
@@ -89,6 +46,12 @@
       <!-- revolution slider close -->
 
       <!-- section begin -->
+      <?php
+          $data_services = get_services($title = null , $limit = 3);
+          $filter_data = json_decode($data_services, true); 
+          $count = 0;
+          if($filter_data['status'] == 1){
+      ?>
       <section id="section-about">
         <div class="container">
           <div class="row">
@@ -97,40 +60,25 @@
               <div class="separator"><span><i class="fa fa-circle"></i></span></div>
               <div class="spacer-single"></div>
             </div>
-            <div class="col-md-4 wow fadeInLeft">
-              <h3><span class="id-color">REAL ESTATE </span> CONSULTING</h3>
-              For when you need it, Chaahat Homes will review, analyze, recommend, and provide solutions for real estate
-              or property related matters or projects. Consulting Services will be targeted to your specific needs,
-              whether for a one time project or recurring
-              services. All services will be provided by experienced real estate professionals, with the focus from your
-              perspective.
-              <div class="spacer-single"></div>
-              <a class="image-popup-no-margins" href="<?= BASE_URL ?>assets/images/misc/pic_1.jpg"> <img src="<?= BASE_URL ?>assets/images/misc/pic_1.jpg"
-                  class="img-responsive" alt="Commercial Projects in Gurgaon"> </a>
-            </div>
-            <div class="col-md-4 wow fadeInUp" data-wow-delay=".2s">
-              <h3><span class="id-color">NRI</span> Service</h3>
-              In our bid to cater to the demands coming from the NRI {Non Resident Indian} community, Orion Realtors is
-              bringing NRI property management services to its set of customers. And as part of these NRI services,
-              Orion Realtors works very closely with its
-              customers through every step of the process of buying a home in India and managing the customer's real
-              estate as NRIs.
-              <div class="spacer-single"></div>
-              <img src="<?= BASE_URL ?>assets/images/misc/pic_2.jpg" class="img-responsive" alt="Invest in Property in Gurgaon">
-            </div>
-            <div class="col-md-4 wow fadeInRight">
-              <h3><span class="id-color">Legal </span> Consulting</h3>
-              Chaahat Homes assists you in getting your dream home through home loan services. Throughout the country
-              home loans facility have made it easy for people to buy properties by providing necessary finance. As loan
-              offer an easy repayment plan, most people
-              opt to buy a home through a home loan. Our home loan services enable you to get a loan with a loan
-              interest rate and quick approval period.
-              <div class="spacer-single"></div>
-              <img src="<?= BASE_URL ?>assets/images/misc/pic_3.jpg" class="img-responsive" alt="Real Estate Consultant in Gurgaon">
-            </div>
+            <?php 
+              foreach ($filter_data['data'] as $services) {
+            ?>
+                <div class="col-md-4 wow fadeInLeft">
+                  <h3><span class="id-color"><?php echo $services['title'] ?></span></h3>
+                  <p><?php echo mb_strimwidth($services['description'], 0, 250, '....') ?></p>
+                  <a class="home-services-align" href="detail-services.php?sid=<?php echo $services['page_url'] ?>">
+                    <img class="img-responsive" src="<?= BASE_URL ?>admin/<?php echo $services['feature'] ?>" alt="<?php echo $services['feature_alt_tag'] ?>"> 
+                  </a>
+                </div>
+            <?php
+              $count++;}
+            ?>
           </div>
         </div>
       </section>
+      <?php
+        }
+      ?>
       <!-- section close -->
 
       <!-- section begin -->
@@ -890,129 +838,12 @@
         </div>
       </section>
 
-      <!-- section close -->
+      <!-- add testimonials -->
+      <?php include 'include/testimonial.php'; ?>
 
+      <!-- add partner/builder section-->
+      <?php include 'include/partner.php'; ?>
 
-
-      <!-- section begin -->
-      <section id="section-testimonial" class="text-light">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-              <h2> <span class="varColor"> Customer </span>Says</h2>
-              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
-              <div class="spacer-single"></div>
-            </div>
-          </div>
-          <div id="testimonial-carousel" class="owl-carousel owl-theme de_carousel wow fadeInUp" data-wow-delay=".3s">
-            <div class="item">
-              <div class="de_testi">
-                <blockquote>
-                  <p>I have met with excutive of chaahathomes. It was nice meeting with him and he gave very nice
-                    "Comparison and Growth of my Investment". Overall i am completely satisfy with the service of
-                    chaahat homes as well as the
-                    Executive. Thanks </p>
-                  <div class="de_testi_by"> UPENDER SINGH </div>
-                </blockquote>
-              </div>
-            </div>
-            <div class="item">
-              <div class="de_testi">
-                <blockquote>
-                  <p>It was quite a Very good experience with the Chaahat Homes. The sales person which I met is good he
-                    explained everything nicely. Also he is very responsive. overall its was very nice.</p>
-                  <div class="de_testi_by"> BIJENDER SHARMA </div>
-                </blockquote>
-              </div>
-            </div>
-            <div class="item">
-              <div class="de_testi">
-                <blockquote>
-                  <p>Hi team, I really appreciate the services that are provided by Chaahat Homes. The executives are
-                    really very kind and humble and always ready to help the client. I am so satisfied with their
-                    services that I am just
-                    free from all tensions and problems that come across while purchasing the dream home of mine.</p>
-                  <div class="de_testi_by"> NARENDRA YADAV </div>
-                </blockquote>
-              </div>
-            </div>
-            <div class="item">
-              <div class="de_testi">
-                <blockquote>
-                  <p>Chaahat Homes is an outstanding real estate associate to work with. They have some of the top
-                    skilled listener and negotiator, with very in-depth knowledge of the local markets. Without a doubt,
-                    we would seek them out
-                    immediately for any upcoming real estate transaction in the future. </p>
-                  <div class="de_testi_by"> Ajay Sharma </div>
-                </blockquote>
-              </div>
-            </div>
-            <div class="item">
-              <div class="de_testi">
-                <blockquote>
-                  <p>Chaahat Homes is the perfect balance between competitiveness and listener. When you're making a big
-                    financial, personal and sometimes emotional decision, like buying a home you want someone who will
-                    be a good listener,
-                    a strong negotiator and who is respected his/her peers. Chaahat Homes meets all expectations. </p>
-                  <div class="de_testi_by"> Anjali Dogra </div>
-                </blockquote>
-              </div>
-            </div>
-            <div class="item">
-              <div class="de_testi">
-                <blockquote>
-                  <p>I have known Chaahat Homes for several years. My wife and I have had the pleasure of working with
-                    them to sell one house and purchase two. Chaahat Homes is a true example of professionalism. They
-                    are hard-working, thorough,
-                    and honest as the day is long. </p>
-                  <div class="de_testi_by"> Manish Gupta </div>
-                </blockquote>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- section close -->
-
-      <!--            latest property-->
-
-      <section id="" class="text-light latest-property">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-              <h2> <span class="varColor"> Builder</span> Partner </h2>
-              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
-              <div class="spacer-single"></div>
-            </div>
-          </div>
-          <div id="propertyNew" class="owl-carousel owl-theme de_carousel wow fadeInUp" data-wow-delay=".3s">
-            <div class="item">
-              <div class="de_testi"> <img src="<?= BASE_URL ?>assets/images/central-park.png" alt="central park"
-                  class="img-fluid propertyLogo mx-auto d-block"> </div>
-            </div>
-            <div class="item">
-              <div class="de_testi"> <img src="<?= BASE_URL ?>assets/images/dlf-ultima.png" alt="dlf ultima"
-                  class="img-fluid propertyLogo mx-auto d-block"> </div>
-            </div>
-            <div class="item">
-              <div class="de_testi"> <img src="<?= BASE_URL ?>assets/images/elan-logo.png" alt="Elan"
-                  class="img-fluid propertyLogo mx-auto d-block"> </div>
-            </div>
-            <div class="item">
-              <div class="de_testi"> <img src="<?= BASE_URL ?>assets/images/trump-tower.png" alt="Trump Towers"
-                  class="img-fluid propertyLogo mx-auto d-block"> </div>
-            </div>
-            <div class="item">
-              <div class="de_testi"> <img src="<?= BASE_URL ?>assets/images/m3m-logo.png" Alt="M3M India"
-                  class="img-fluid propertyLogo mx-auto d-block"> </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- footer begin -->
-     
-      <!-- footer close -->
     </div>
   </div>
 

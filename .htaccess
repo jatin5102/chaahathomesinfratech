@@ -9,6 +9,8 @@ RewriteEngine On
 #RewriteRule ^blogs update.php [NC,L]
 RewriteRule ^about-us about.php [NC,L]
 RewriteRule ^services service.php [NC,L]
+RewriteRule ^testimonials testimonials.php [NC,L]
+
 
 RewriteRule ^featured featured.php [NC,L]
 RewriteRule ^award award.php [NC,L]

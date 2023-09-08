@@ -95,23 +95,7 @@
 	}
 
 
-	function get_all_developer(){
-		global $conn;
-		
-		$temp_data = '';
-		$sql = "SELECT * FROM developer ORDER BY id DESC";
-		$query = mysqli_query($conn, $sql);
-		if(mysqli_num_rows($query) > 0){
-			$developer = [];
-			while($row = mysqli_fetch_assoc($query)){
-				$developer[] = $row;
-			}
-				return json_encode($developer);
-		}else{
-			$status = 'No Data';
-			return $status;
-		}
-	}
+
 	
 	
 	function get_all_property(){
@@ -706,13 +690,17 @@
 		}
 	}
 
-	function get_services ($title = null) {
+	function get_services ($title = null, $limit = null) {
 		global $conn;
 
 		$sql = '';
 		$query = '';
+
 		if($title != null){
 			$sql = "SELECT * FROM services WHERE page_url = '$title'";
+			$query = mysqli_query($conn, $sql);
+		}else if($limit != null){
+			$sql = "SELECT * FROM services ORDER BY id DESC LIMIT $limit";
 			$query = mysqli_query($conn, $sql);
 		}else{
 			$sql = "SELECT * FROM services ORDER BY id DESC";
@@ -732,6 +720,34 @@
 		}
 	}
 
+	function get_testimonials() {
+		global $conn;
+		$query = mysqli_query($conn, "SELECT * FROM `testimonials_emp` ORDER BY id DESC");
+		if(mysqli_num_rows($query) > 0){
+			$array = array();
+			while($row = mysqli_fetch_assoc($query)){
+				$array[] = $row;
+			}
+			$data = ['data'=> $array, 'status'=>1];
+			return json_encode($data);
+		}else{
+			return json_encode(['status'=>0]);
+		}
+	}
 
-	
+	function get_all_developer(){
+		global $conn;
+		
+		$sql = "SELECT * FROM developer ORDER BY id DESC";
+		$query = mysqli_query($conn, $sql);
+		if(mysqli_num_rows($query) > 0){
+			$developer = array();
+			while($row = mysqli_fetch_assoc($query)){
+				$developer[] = $row;
+			}
+				return json_encode(['data' => $developer, 'status' => 1]);
+		}else{
+			return json_encode(['status'=>0, 'error'=>"You have'nt more records!"]);
+		}
+	}
 ?>

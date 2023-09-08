@@ -53,7 +53,7 @@
                         <section id="section-service-1" class="side-bg no-padding" style="<?=($count%2 == 0) ?  'background-color:#000' : 'background-color:#212225; display:flex; flex-direction: row-reverse;' ?>">
                             <div class="image-container col-md-5 pull-left" data-delay="0">
                                 <div class="background-image">
-                                    <img src="<?= BASE_URL ?>/assets/uploads/services/<?php echo $services['feature']; ?>" />
+                                    <img src="<?= ADMIN_URL ?><?php echo $services['feature']; ?>" alt="<?php echo $services['feature_alt_tag'] ?>" />
                                 </div>
                             </div>
 
@@ -62,7 +62,7 @@
                                         <div class="col-md-6"></div>
                                         <div class="col-md-6 wow fadeInRight" data-wow-delay=".5s">
                                             <h3 class="id-color"><?php echo $services['title']; ?></h3>
-                                            <p><?php echo mb_strimwidth($services['description'], 0, 120, '...') ?></p>
+                                            <p><?php echo mb_strimwidth($services['description'], 0, 250, '...') ?></p>
                                             <div class="spacer-single"></div>
                                             <a href="detail-services.php?sid=<?php echo $services['page_url'] ?>" class="btn-line">Read More</a>
                                         </div>

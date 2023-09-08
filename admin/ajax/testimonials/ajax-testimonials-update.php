@@ -11,10 +11,10 @@
 		$error=1;
 	}
 
-	if(empty($_POST['testimonials_update_designation'])){
-		$validator['testimonials_update_designation']="This fields is required";
-		$error=1;
-	}
+	// if(empty($_POST['testimonials_update_designation'])){
+	// 	$validator['testimonials_update_designation']="This fields is required";
+	// 	$error=1;
+	// }
 
 
 	if(empty($_POST['testimonials_update_paragraph'])){
